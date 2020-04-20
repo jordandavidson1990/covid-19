@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./AllTable.css";
 
 export default function AllTable({ countries, handleCountry }) {
   const [sortedCountries, setSortedCountries] = useState(countries);
@@ -7,6 +8,7 @@ export default function AllTable({ countries, handleCountry }) {
   const [alphabeticalSorted, setAlphabeticalSorted] = useState(true);
   const [dailyDeath, setDailyDeath] = useState(true);
   const [showSort, setShowSort] = useState(false);
+
   const rearrangeList = (level) => {
     function sortArray() {
       const sorted = [...countries].sort((a, b) => {
@@ -68,41 +70,33 @@ export default function AllTable({ countries, handleCountry }) {
   if (!countries) return null;
   return (
     <>
-      <table>
-        <tbody>
+      <table className="all-table-container">
+        <tbody className="all-table">
           <tr>
-            <th>
-              {alphabeticalSorted ? (
-                <p onClick={() => rearrangeList("alphaOrder")}>Country ▽</p>
-              ) : (
-                <p onClick={() => rearrangeList("nonAlphaOrder")}>Country △</p>
-              )}
-            </th>
-            <th>
-              {confirmRateHigh ? (
-                <p onClick={() => rearrangeList("highConfirm")}>
-                  Total Confirmed △
-                </p>
-              ) : (
-                <p onClick={() => rearrangeList("lowConfirm")}>
-                  Total Confirmed ▽
-                </p>
-              )}
-            </th>
-            <th>
-              {deathRateHigh ? (
-                <p onClick={() => rearrangeList("highDeath")}>Total Deaths △</p>
-              ) : (
-                <p onClick={() => rearrangeList("lowDeath")}>Total Deaths ▽</p>
-              )}
-            </th>
-            <th>
-              {dailyDeath ? (
-                <p onClick={() => rearrangeList("highDaily")}>Daily Death △</p>
-              ) : (
-                <p onClick={() => rearrangeList("lowDaily")}>Daily Death ▽</p>
-              )}
-            </th>
+            {alphabeticalSorted ? (
+              <th onClick={() => rearrangeList("alphaOrder")}>Country ▽</th>
+            ) : (
+              <th onClick={() => rearrangeList("nonAlphaOrder")}>Country △</th>
+            )}
+            {confirmRateHigh ? (
+              <th onClick={() => rearrangeList("highConfirm")}>
+                Total Confirmed △
+              </th>
+            ) : (
+              <th onClick={() => rearrangeList("lowConfirm")}>
+                Total Confirmed ▽
+              </th>
+            )}
+            {deathRateHigh ? (
+              <th onClick={() => rearrangeList("highDeath")}>Total Deaths △</th>
+            ) : (
+              <th onClick={() => rearrangeList("lowDeath")}>Total Deaths ▽</th>
+            )}
+            {dailyDeath ? (
+              <th onClick={() => rearrangeList("highDaily")}>Daily Death △</th>
+            ) : (
+              <th onClick={() => rearrangeList("lowDaily")}>Daily Death ▽</th>
+            )}
           </tr>
           {showSort ? tableRows(sortedCountries) : tableRows(countries)}
         </tbody>

@@ -1,0 +1,9 @@
+.all-table th:hover {
+  cursor: pointer;
+}
+
+.all-table-container {
+  margin: auto;
+  display: flex;
+  width: 80%;
+}

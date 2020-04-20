@@ -65,3 +65,7 @@ table th {
   background-color: rgb(75, 10, 100);
   color: white;
 }
+
+* {
+  font-family: monospace;
+}
