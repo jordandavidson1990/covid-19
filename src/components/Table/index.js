@@ -3,6 +3,7 @@ import CountUp from "react-countup";
 
 export default function Table({ data }) {
   const tdElements = () => {
+    // TODO elements arent getting pushed in correct order
     const tdElementsArray = [];
     for (const key in data) {
       if (data.hasOwnProperty(key)) {

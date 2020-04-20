@@ -3,6 +3,7 @@ import CountryPicker from "./components/CountryPicker";
 import GlobalStats from "./components/GlobalStats";
 import CountryDetail from "./components/CountryDetail";
 import AllCountries from "./components/AllCountries";
+import SearchBox from "./components/SearchBox";
 import Header from "./components/Header";
 import { fetchData } from "./helpers/requests";
 import "./App.css";
@@ -11,6 +12,7 @@ function App() {
   const [data, setData] = useState({});
   const [selectedCountry, setSelectedCountry] = useState({});
   const [allCountries, setAllCountries] = useState([]);
+  const [filteredCountries, setFilteredCountries] = useState([]);
 
   useEffect(() => {
     async function fetchInfo() {
@@ -35,8 +37,17 @@ function App() {
 
   function getAllCountries(allCountries) {
     return allCountries.map(function (country) {
+      setFilteredCountries((prev) => [...prev, country]);
       return setAllCountries((prev) => [...prev, country]);
     });
+  }
+
+  function onSearch(letter) {
+    setFilteredCountries(
+      allCountries.filter((country) => {
+        return country.Country.toLowerCase().search(letter) !== -1;
+      })
+    );
   }
   return (
     <div className="App">
@@ -48,9 +59,11 @@ function App() {
             countries={data.Countries}
             handleCountry={handleCountrySelect}
           />
+          <SearchBox onSearch={onSearch} />
           <CountryDetail country={selectedCountry} />
+
           <AllCountries
-            countries={allCountries}
+            countries={filteredCountries}
             handleCountry={handleFullCountry}
           />
         </>
