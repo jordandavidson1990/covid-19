@@ -1,4 +1,5 @@
-.all-table th:hover {
+.all-table th:hover,
+.table-row {
   cursor: pointer;
 }
 

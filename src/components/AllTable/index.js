@@ -59,7 +59,11 @@ export default function AllTable({ countries, handleCountry }) {
   const tableRows = (array) =>
     array.map((country, index) => {
       return (
-        <tr key={index} onClick={() => handleClick(country)}>
+        <tr
+          key={index}
+          onClick={() => handleClick(country)}
+          className="table-row"
+        >
           <td>{country.Country.toLocaleString()} </td>
           <td>{country.TotalConfirmed.toLocaleString()}</td>
           <td>{country.TotalDeaths.toLocaleString()}</td>
