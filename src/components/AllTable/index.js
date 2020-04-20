@@ -42,12 +42,12 @@ export default function AllTable({ countries, handleCountry }) {
           setAlphabeticalSorted(true);
           return b.Country.localeCompare(a.Country);
         } else {
-          console.log("error");
+          return null;
         }
       });
-      setSortedCountries(sorted);
+      return setSortedCountries(sorted);
     }
-    new Promise(sortArray).then(setShowSort(true));
+    return new Promise(sortArray).then(setShowSort(true));
   };
 
   const handleClick = (country) => {

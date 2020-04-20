@@ -2,21 +2,6 @@ import React from "react";
 import CountUp from "react-countup";
 
 export default function Table({ data }) {
-  const tdElements = () => {
-    // TODO elements arent getting pushed in correct order
-    const tdElementsArray = [];
-    for (const key in data) {
-      if (data.hasOwnProperty(key)) {
-        const element = data[key];
-        tdElementsArray.push(
-          <td key={key}>
-            <CountUp start={0} end={element} duration={1.5} separator={","} />
-          </td>
-        );
-      }
-    }
-    return tdElementsArray;
-  };
   return (
     <>
       <table>
@@ -29,7 +14,56 @@ export default function Table({ data }) {
             <th>Total Deaths</th>
             <th>Total Recovered</th>
           </tr>
-          <tr>{tdElements()}</tr>
+          <tr>
+            <td>
+              <CountUp
+                start={0}
+                end={data.NewConfirmed}
+                duration={1.5}
+                separator={","}
+              />
+            </td>
+            <td>
+              <CountUp
+                start={0}
+                end={data.NewDeaths}
+                duration={1.5}
+                separator={","}
+              />
+            </td>
+            <td>
+              <CountUp
+                start={0}
+                end={data.NewRecovered}
+                duration={1.5}
+                separator={","}
+              />
+            </td>
+            <td>
+              <CountUp
+                start={0}
+                end={data.TotalConfirmed}
+                duration={1.5}
+                separator={","}
+              />
+            </td>
+            <td>
+              <CountUp
+                start={0}
+                end={data.TotalDeaths}
+                duration={1.5}
+                separator={","}
+              />
+            </td>
+            <td>
+              <CountUp
+                start={0}
+                end={data.TotalRecovered}
+                duration={1.5}
+                separator={","}
+              />
+            </td>
+          </tr>
         </tbody>
       </table>
     </>
