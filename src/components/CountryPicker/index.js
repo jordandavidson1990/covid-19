@@ -1,7 +1,12 @@
 import React from "react";
 
 export default function CountryPicker({ countries, handleCountry }) {
-  if (!countries) return "Loading...";
+  if (!countries)
+    return (
+      <section>
+        <progress-spinner dotted></progress-spinner>
+      </section>
+    );
 
   const countriesOptions = countries.map((country, index) => {
     return (

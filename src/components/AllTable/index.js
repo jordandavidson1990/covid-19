@@ -65,9 +65,11 @@ export default function AllTable({ countries, handleCountry }) {
           className="table-row"
         >
           <td>{country.Country.toLocaleString()} </td>
-          <td>{country.TotalConfirmed.toLocaleString()}</td>
-          <td>{country.TotalDeaths.toLocaleString()}</td>
-          <td>{country.NewDeaths.toLocaleString()}</td>
+          <td className="confirmed">
+            {country.TotalConfirmed.toLocaleString()}
+          </td>
+          <td className="deaths">{country.TotalDeaths.toLocaleString()}</td>
+          <td className="new-deaths">{country.NewDeaths.toLocaleString()}</td>
         </tr>
       );
     });

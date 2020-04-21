@@ -8,3 +8,14 @@
   display: flex;
   width: 80%;
 }
+
+td.confirmed {
+  border-bottom: coral solid 1px;
+}
+
+td.deaths {
+  border-bottom: crimson solid 1px;
+}
+td.new-deaths {
+  border-bottom: darkslateblue solid 1px;
+}

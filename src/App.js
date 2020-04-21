@@ -5,6 +5,7 @@ import CountryDetail from "./components/CountryDetail";
 import AllCountries from "./components/AllCountries";
 import SearchBox from "./components/SearchBox";
 import Header from "./components/Header";
+import Chart from "./components/Chart";
 import { fetchData } from "./helpers/requests";
 import "./App.css";
 
@@ -13,6 +14,7 @@ function App() {
   const [selectedCountry, setSelectedCountry] = useState({});
   const [allCountries, setAllCountries] = useState([]);
   const [filteredCountries, setFilteredCountries] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchInfo() {
@@ -22,6 +24,7 @@ function App() {
       });
     }
     fetchInfo();
+    setLoading(false);
   }, []);
 
   const handleCountrySelect = (countryName) => {
@@ -50,25 +53,27 @@ function App() {
     );
   }
   return (
-    <div className="App">
-      <Header />
-      {data ? (
-        <>
-          <GlobalStats data={data.Global} />
-          <CountryPicker
-            countries={data.Countries}
-            handleCountry={handleCountrySelect}
-          />
-          <SearchBox onSearch={onSearch} />
-          <CountryDetail country={selectedCountry} />
-
-          <AllCountries
-            countries={filteredCountries}
-            handleCountry={handleFullCountry}
-          />
-        </>
-      ) : null}
-    </div>
+    <>
+      <div className="App">
+        <Header loading={loading} />
+        <Chart />
+        {data ? (
+          <>
+            <GlobalStats data={data.Global} dateStat={data.Date} />
+            <CountryPicker
+              countries={data.Countries}
+              handleCountry={handleCountrySelect}
+            />
+            <SearchBox onSearch={onSearch} />
+            <CountryDetail country={selectedCountry} />
+            <AllCountries
+              countries={filteredCountries}
+              handleCountry={handleFullCountry}
+            />
+          </>
+        ) : null}
+      </div>
+    </>
   );
 }
 

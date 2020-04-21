@@ -1,5 +1,6 @@
 import React from "react";
 import CountUp from "react-countup";
+import "./Table.css";
 
 export default function Table({ data }) {
   return (
@@ -8,13 +9,6 @@ export default function Table({ data }) {
         <tbody>
           <tr>
             <th>New Confirmed</th>
-            <th>New Deaths</th>
-            <th>New Recovered</th>
-            <th>Total Confirmed</th>
-            <th>Total Deaths</th>
-            <th>Total Recovered</th>
-          </tr>
-          <tr>
             <td>
               <CountUp
                 start={0}
@@ -23,6 +17,9 @@ export default function Table({ data }) {
                 separator={","}
               />
             </td>
+          </tr>
+          <tr>
+            <th>New Deaths</th>
             <td>
               <CountUp
                 start={0}
@@ -31,6 +28,9 @@ export default function Table({ data }) {
                 separator={","}
               />
             </td>
+          </tr>
+          <tr>
+            <th>New Recovered</th>
             <td>
               <CountUp
                 start={0}
@@ -39,6 +39,9 @@ export default function Table({ data }) {
                 separator={","}
               />
             </td>
+          </tr>
+          <tr>
+            <th>Total Confirmed</th>
             <td>
               <CountUp
                 start={0}
@@ -47,6 +50,9 @@ export default function Table({ data }) {
                 separator={","}
               />
             </td>
+          </tr>
+          <tr>
+            <th>Total Deaths</th>
             <td>
               <CountUp
                 start={0}
@@ -55,6 +61,10 @@ export default function Table({ data }) {
                 separator={","}
               />
             </td>
+          </tr>
+          <tr>
+            <th>Total Recovered</th>
+
             <td>
               <CountUp
                 start={0}
